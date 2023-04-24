@@ -18,11 +18,25 @@ const App= ()=>{
 
   return (
     /* <View style={{flex:1, backgroundColor:'#333', justifyContent:'flex-start',flexDirection:'row-reverse'}}>*/
-    <View style={{flex:1, backgroundColor:'#333', justifyContent:'center',flexDirection:'row',alignItems:'center'}}>
+    <View style={{flex:1, backgroundColor:'#333', justifyContent:'flex-start',flexDirection:'column', alignContent:'center',flexWrap:'wrap-reverse'}}>
 
-     { /*<View  style={{flex:1, height:50, backgroundColor:'red'}}></View>
-      <View  style={{flex:3,height:50, backgroundColor:'green'}}></View>*/}
-     <Text style={{color:'#fff',fontSize:18, fontFamily:'BYekan'}}>سلام آموزش React Native </Text>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'red'}}></View>
+      <View  style={{width:50,height:50, backgroundColor:'green'}}></View>
+     {/*<Text style={{color:'#fff',fontSize:18, fontFamily:'BYekan'}}>سلام آموزش React Native </Text>*/}
 
       {/*<View  style={{flexGrow:1, flexShrink:1, flexBasis:100,  height:50, backgroundColor:'red'}}></View>
       <View  style={{flexGrow:2,flexShrink:2, flexBasis:200,height:50, backgroundColor:'green'}}></View>
