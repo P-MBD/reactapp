@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation} from 'react-native';
+import React, {useState} from 'react';
+import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback, } from 'react-native';
 const HomeScreen = (props) =>{
-    const[changeColor,setChangeColor]=useState(false)
+    const [changeColor, setChangeColor] = useState(false);
+    const [countTouch, setCountTouch] = useState(0);
     const dataArray=[
         {
             name:'test1',
@@ -66,7 +67,7 @@ const HomeScreen = (props) =>{
                 }
             </ScrollView>*/}
 
-            <FlatList keyExtractor={(item,index)=>item.id + index} data={dataArray} renderItem={({item})=>{
+           {/* <FlatList keyExtractor={(item,index)=>item.id + index} data={dataArray} renderItem={({item})=>{
 
                 return(
                     <View>
@@ -77,7 +78,65 @@ const HomeScreen = (props) =>{
                     </View>
                 )
 
-            }} numColumns={2}/>
+            }} numColumns={2}/>*/}
+
+            {/*<VirtualizedList
+                data={dataArray}
+                keyExtractor={(item,index) => item.id + index}
+                renderItem={({item}) => {
+                    return(
+                        <View><Text>{item.family}</Text></View>
+                    )
+                }}
+                getItemCount={(data) => {return data.length}}
+                getItem={(data, index) => {
+                    return data[index]
+                }}
+                horizontal
+            /> */}
+
+            <TouchableOpacity onPress={() => {
+                setChangeColor(!changeColor)
+            }}
+            activeOpacity={0.9}
+            >
+                <Text style={{color : changeColor ? 'red' : 'green'}}>React Native</Text>
+            </TouchableOpacity>
+
+            <TouchableHighlight 
+                onPress={() => {
+                    setCountTouch(countTouch + 1)
+                }}
+
+                underlayColor="green"
+                activeOpacity={0.9}
+            >
+                <View style={{backgroundColor : '#ddd'}}>
+                    <Text>click me!</Text>
+                </View>
+            </TouchableHighlight>
+            <View>
+                <Text>{countTouch}</Text>
+            </View>
+
+            
+            <TouchableWithoutFeedback
+            onPress={() => {
+                setCountTouch(countTouch + 1)
+            }}
+            >
+            <View style={{backgroundColor : '#ddd'}}>
+                    <Text>click me! feedback</Text>
+            </View>
+            </TouchableWithoutFeedback>
+            <View>
+                <Text>{countTouch}</Text>
+            </View>
+
+            
+         
+
+
 
         </View>
       )
