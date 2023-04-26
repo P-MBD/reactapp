@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
-import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable,  ActivityIndicator, } from 'react-native';
+let page=0;
+let count=5;
 const HomeScreen = (props) =>{
     const [changeColor, setChangeColor] = useState(false);
     const [countTouch, setCountTouch] = useState(0);
@@ -44,7 +46,104 @@ const HomeScreen = (props) =>{
             name:'test10',
             family:'test1010'
         },
+        {
+            name:'test1',
+            family:'test11'
+        },
+        {
+            name:'test2',
+            family:'test22'
+        },
+        {
+            name:'test3',
+            family:'test33'
+        },
+        {
+            name:'test4',
+            family:'test44'
+        },
+        {
+            name:'test5',
+            family:'test55'
+        },
+        {
+            name:'test6',
+            family:'test66'
+        },
+        {
+            name:'test7',
+            family:'test77'
+        },
+        {
+            name:'test8',
+            family:'test88'
+        },
+        {
+            name:'test9',
+            family:'test99'
+        },
+        {
+            name:'test10',
+            family:'test1010'
+        },
+        {
+            name:'test1',
+            family:'test11'
+        },
+        {
+            name:'test2',
+            family:'test22'
+        },
+        {
+            name:'test3',
+            family:'test33'
+        },
+        {
+            name:'test4',
+            family:'test44'
+        },
+        {
+            name:'test5',
+            family:'test55'
+        },
+        {
+            name:'test6',
+            family:'test66'
+        },
+        {
+            name:'test7',
+            family:'test77'
+        },
+        {
+            name:'test8',
+            family:'test88'
+        },
+        {
+            name:'test9',
+            family:'test99'
+        },
+        {
+            name:'test10',
+            family:'test1010'
+        },
     ]
+    const DATA = [];
+    const [isLoading, setIsloading]=useState(true);
+    const[item,setItem]=useState([]);
+    const[fetchStatus,setFetchStatus]= useState(false);
+   
+    useEffect(() => {
+        setItem([...item, ...dataArray.slice(page, count)]);
+        setIsloading(false);
+    },[])
+
+    const fetch_data = () => {
+        setFetchStatus(true);
+        page = count;
+        count = count + 5;
+        setItem([...item, ...dataArray.slice(page, count)]);
+        setFetchStatus(false);
+    }
     return(
         <View style={{backgroundColor:'#fff'}}>
             {/*<Text style={{color:'#fff',fontSize:18, fontFamily:'BYekan'}}>{props.name} </Text>
@@ -133,7 +232,7 @@ const HomeScreen = (props) =>{
                 <Text>{countTouch}</Text>
             </View>*/}
 
-            <Pressable onPress={() => {
+            {/*<Pressable onPress={() => {
                 setCountTouch(countTouch + 1)
             }} hitSlop={{top:100}}
             pressRetentionOffset={{bottom : 100}}
@@ -145,7 +244,36 @@ const HomeScreen = (props) =>{
             </Pressable>
             <View>
                 <Text>{countTouch}</Text>
-            </View>
+            </View>*/}
+
+<FlatList
+                data={item}
+                renderItem={({item}) => {
+                    return(
+                        <View>
+                            <Text>{item.family}</Text>
+                        </View>
+                    )
+                }}
+                keyExtractor={(i, index) => i.id + index }
+                onEndReached={() => fetch_data()}
+                onEndReachedThreshold={0.1}
+                ListFooterComponent={() => {
+                    return(
+                        <ActivityIndicator color="green" size="large" />
+                        // <View style={{marginTop : 40}}>
+                        //     <TouchableOpacity
+                        //     style={{backgroundColor : 'green', borderRadius : 8, width : 100, alignSelf : 'center'}}
+                        //         activeOpacity={0.9}
+                        //         onPress={() => fetch_data()}
+                        //     >
+                        //         <Text style={{color : '#fff', textAlign : 'center'}}>More Data!</Text>
+                        //     </TouchableOpacity>
+                        // </View>
+                    )
+                }}
+
+/>
          
 
 
