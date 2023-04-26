@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback, } from 'react-native';
+import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable } from 'react-native';
 const HomeScreen = (props) =>{
     const [changeColor, setChangeColor] = useState(false);
     const [countTouch, setCountTouch] = useState(0);
@@ -95,7 +95,7 @@ const HomeScreen = (props) =>{
                 horizontal
             /> */}
 
-            <TouchableOpacity onPress={() => {
+           {/* <TouchableOpacity onPress={() => {
                 setChangeColor(!changeColor)
             }}
             activeOpacity={0.9}
@@ -131,9 +131,21 @@ const HomeScreen = (props) =>{
             </TouchableWithoutFeedback>
             <View>
                 <Text>{countTouch}</Text>
-            </View>
+            </View>*/}
 
-            
+            <Pressable onPress={() => {
+                setCountTouch(countTouch + 1)
+            }} hitSlop={{top:100}}
+            pressRetentionOffset={{bottom : 100}}
+            >
+                
+            <View style={{backgroundColor : '#ddd'}}>
+                    <Text>click me! pressbale</Text>
+            </View>
+            </Pressable>
+            <View>
+                <Text>{countTouch}</Text>
+            </View>
          
 
 
