@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable,  ActivityIndicator,Modal, StyleSheet,Alert } from 'react-native';
+import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable,  ActivityIndicator,Modal, StyleSheet,Alert, RefreshControl } from 'react-native';
 let page=0;
 let count=5;
 const HomeScreen = (props) =>{
     const [changeColor, setChangeColor] = useState(false);
     const [countTouch, setCountTouch] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const[refreshing, setRefreshing] = useState(false);
     const dataArray=[
         {
             name:'test1',
@@ -160,6 +161,13 @@ const HomeScreen = (props) =>{
                 },
             ]
         )
+       
+    }
+    const onRefresh= () => {
+        setRefreshing(true);
+        setTimeout(()=>{
+            setRefreshing(false)
+        },2000)
     }
     return(
         <View style={{backgroundColor:'#fff'}}>
@@ -292,7 +300,7 @@ const HomeScreen = (props) =>{
 
             />*/}
          
-            <Modal
+            {/*<Modal
             animationType='fade'
             visible={showModal}
             transparent={true}
@@ -320,9 +328,15 @@ const HomeScreen = (props) =>{
                 <Pressable onPress={FuncAlert}>
                             <Text>show Modal</Text>
                         </Pressable>
-            </View>
+            </View> */}
 
-                
+            <ScrollView style={{flex : 1}}
+                     refreshControl={
+                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }
+            >
+                <Text>pull screen down</Text>
+            </ScrollView>
             
 
         </View>
