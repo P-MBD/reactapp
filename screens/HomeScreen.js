@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable,  ActivityIndicator, } from 'react-native';
+import {View,Text,TouchableOpacity,ScrollView,FlatList, LayoutAnimation, VirtualizedList,TouchableHighlight,TouchableWithoutFeedback,Pressable,  ActivityIndicator,Modal, StyleSheet,Alert } from 'react-native';
 let page=0;
 let count=5;
 const HomeScreen = (props) =>{
     const [changeColor, setChangeColor] = useState(false);
     const [countTouch, setCountTouch] = useState(0);
+    const [showModal, setShowModal] = useState(false);
     const dataArray=[
         {
             name:'test1',
@@ -144,6 +145,22 @@ const HomeScreen = (props) =>{
         setItem([...item, ...dataArray.slice(page, count)]);
         setFetchStatus(false);
     }
+    const FuncAlert = () => {
+        Alert.alert(
+            'Alert Title',
+            'This is a test for Alert',
+            [
+                {
+                    text : 'cancel',
+                    onPress:()=> console.log('cancel')
+                },
+                {
+                    text : 'ok',
+                    onPress:()=> console.log('cancel')
+                },
+            ]
+        )
+    }
     return(
         <View style={{backgroundColor:'#fff'}}>
             {/*<Text style={{color:'#fff',fontSize:18, fontFamily:'BYekan'}}>{props.name} </Text>
@@ -246,7 +263,7 @@ const HomeScreen = (props) =>{
                 <Text>{countTouch}</Text>
             </View>*/}
 
-<FlatList
+{/*<FlatList
                 data={item}
                 renderItem={({item}) => {
                     return(
@@ -273,12 +290,62 @@ const HomeScreen = (props) =>{
                     )
                 }}
 
-/>
+            />*/}
          
+            <Modal
+            animationType='fade'
+            visible={showModal}
+            transparent={true}
+            >
+                <View style={styles.mainView}>
+                    <View style={styles.secondView}>
+                        <Text>This is a Modal in react native</Text>
+                    </View>
 
+                     <View style={styles.ModalBottom}>
+                        <Pressable onPress={()=>{
+                                setShowModal(!showModal)
+                        }}>
+                            <Text>Hide Modal</Text>
+                        </Pressable>
+                    </View>
 
+                </View>
+            </Modal>
+            
+            
+                    
+
+            <View>
+                <Pressable onPress={FuncAlert}>
+                            <Text>show Modal</Text>
+                        </Pressable>
+            </View>
+
+                
+            
 
         </View>
       )
+
+   
 }
+const styles = StyleSheet.create({
+    mainView:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+
+    },
+    ModalBottom:{
+        backgroundColor:'green',
+        borderRadius:10,
+        marginTop:25
+    },
+    button:{
+        padding:15,
+        color:'#fff',
+        fontSize:16
+    },
+  })
 export {HomeScreen}
