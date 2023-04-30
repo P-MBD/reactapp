@@ -2,6 +2,7 @@
 import React from 'react';
 import {Text,View} from 'react-native';
 import { HomeScreen } from './screens/HomeScreen';
+import { LoginScreen } from './screens/LoginScreen';
 const App= ()=>{
   const name="ali"
   return (
@@ -18,7 +19,8 @@ const App= ()=>{
       <View  style={{flexGrow:2,flexShrink:2, flexBasis:200,height:50, backgroundColor:'green'}}></View>
     <View  style={{flexGrow:3,flexShrink:0.5, flexBasis:300,height:50, backgroundColor:'blue'}}></View>*/}
 
-      <HomeScreen name="React Native" />
+      {/*<HomeScreen name="React Native" />*/}
+      <LoginScreen />
 
     </View>
     )
